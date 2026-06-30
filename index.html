@@ -3,259 +3,129 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>25 — هوية الذكرى السنوية | Design System</title>
-  <meta name="description" content="موقع تجريبي مبني بالكامل على نظام التصميم: تدرّجات بنفسجي → ماجنتا → برتقالي مع كل المؤثرات." />
+  <title>معرض المشاريع — تجربة غامرة</title>
+  <meta name="description" content="تجربة معرض غامرة على غرار jenamdvacetpet.cz — أجنحة ومشاريع مرقّمة داخل مركز معارض." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+<div id="app">
 
   <!-- ============================================================= -->
-  <!-- القسم 1 — شريط التنقل العلوي (Header / Navigation)            -->
+  <!-- القسم 1 — شاشة التحميل (Loading Screen + العدّاد)             -->
   <!-- ============================================================= -->
-  <header id="section-1-nav" class="nav" data-section="1">
-    <div class="nav__inner">
-      <a href="#section-2-hero" class="nav__logo">
-        <span class="nav__logo-mark">25</span>
-        <span class="nav__logo-text">Anniversary</span>
-      </a>
-      <nav class="nav__links" id="navLinks">
-        <a href="#section-2-hero" class="nav__link is-active">الرئيسية</a>
-        <a href="#section-3-stats" class="nav__link">الأرقام</a>
-        <a href="#section-4-features" class="nav__link">المميزات</a>
-        <a href="#section-5-showcase" class="nav__link">العناصر</a>
-        <a href="#section-6-form" class="nav__link">تواصل</a>
-      </nav>
-      <button class="nav__burger" id="navBurger" aria-label="القائمة">
-        <span></span><span></span><span></span>
-      </button>
+  <section id="section-1-loading" class="screen loading is-active" data-screen="loading">
+    <div class="loading__center">
+      <div class="loading__icon">📕</div>
+      <h1 class="loading__tagline">25 عامًا من العلم<br/>والإبداع والنمو.</h1>
+    </div>
+    <div class="loading__counter" id="loadCounter">0</div>
+    <div class="ribbon">25</div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- القسم 3 — الشريط العلوي (Top Chrome: logo / sound / lang)     -->
+  <!-- (يظهر فوق الخريطة والمحطات)                                   -->
+  <!-- ============================================================= -->
+  <header id="section-3-chrome" class="chrome" hidden>
+    <a class="chrome__logo" href="#" id="logoHome">
+      <span class="chrome__logo-mark">▦</span>
+      <span class="chrome__logo-text">معرض المشاريع</span>
+    </a>
+    <div class="chrome__right">
+      <button class="chrome__btn" id="soundBtn" aria-label="الصوت">♪</button>
+      <button class="chrome__btn chrome__lang" id="langBtn">AR</button>
     </div>
   </header>
 
   <!-- ============================================================= -->
-  <!-- القسم 2 — الواجهة الرئيسية (Hero / Gradient)                  -->
+  <!-- القسم 2 — المقدمة (Intro: كلمات تظهر واحدة واحدة)             -->
   <!-- ============================================================= -->
-  <section id="section-2-hero" class="hero" data-section="2">
-    <!-- أشكال عائمة للزينة -->
-    <div class="hero__shapes" aria-hidden="true">
-      <span class="shape shape--1"></span>
-      <span class="shape shape--2"></span>
-      <span class="shape shape--3"></span>
-      <span class="shape shape--4"></span>
+  <section id="section-2-intro" class="screen intro" data-screen="intro" hidden>
+    <div class="venue-bg" aria-hidden="true"></div>
+    <div class="intro__words" id="introWords">
+      <span class="intro__word">مركز</span>
+      <span class="intro__word">المعارض</span>
+      <span class="intro__word">السعودي</span>
     </div>
-
-    <div class="hero__content reveal">
-      <span class="hero__badge">★ نحتفل بـ 25 عامًا من التميّز</span>
-      <h1 class="hero__title">
-        خمسة وعشرون عامًا<br />
-        <span class="hero__title-grad">من الإبداع والمعرفة</span>
-      </h1>
-      <p class="hero__subtitle">
-        نظام تصميم معاصر يقوم على التدرّجات الجريئة من البنفسجي إلى الماجنتا
-        إلى البرتقالي — هوية تنبض بالطموح والنمو والابتكار.
-      </p>
-      <div class="hero__actions">
-        <button class="btn btn--primary" data-ripple>اكتشف المزيد</button>
-        <button class="btn btn--ghost" data-ripple>شاهد الفيديو</button>
-      </div>
-    </div>
-
-    <!-- مؤشّر التمرير للأسفل -->
-    <a href="#section-3-stats" class="hero__scroll" aria-label="مرّر للأسفل">
-      <span class="hero__scroll-dot"></span>
-    </a>
+    <div class="ribbon">25</div>
+    <div class="credit">powered by <b>YOURSTUDIO</b></div>
   </section>
 
   <!-- ============================================================= -->
-  <!-- القسم 3 — الأرقام (Stats / Counters)                          -->
+  <!-- القسم 4 — الخريطة / القاعة بالنقاط المرقّمة (Venue Map)       -->
   <!-- ============================================================= -->
-  <section id="section-3-stats" class="stats" data-section="3">
-    <div class="container">
-      <div class="stats__grid">
-        <div class="stat reveal">
-          <div class="stat__num" data-count="25">0</div>
-          <div class="stat__label">عامًا من العطاء</div>
-        </div>
-        <div class="stat reveal" data-delay="100">
-          <div class="stat__num" data-count="120">0</div>
-          <div class="stat__label">برنامجًا أكاديميًا</div>
-        </div>
-        <div class="stat reveal" data-delay="200">
-          <div class="stat__num" data-count="48">0</div>
-          <div class="stat__label">دولة حول العالم</div>
-        </div>
-        <div class="stat reveal" data-delay="300">
-          <div class="stat__num" data-count="15">0</div>
-          <div class="stat__label">ألف خرّيج</div>
-        </div>
-      </div>
+  <section id="section-4-map" class="screen map" data-screen="map" hidden>
+    <div class="venue-bg venue-bg--map" aria-hidden="true">
+      <div class="venue-floor"></div>
+      <div class="venue-glow"></div>
     </div>
+
+    <h2 class="map__hint">اختر مشروعًا للدخول</h2>
+
+    <!-- النقاط المرقّمة تُحقَن هنا تلقائيًا من script.js (قائمة STATIONS) -->
+    <div class="hotspots" id="hotspots"></div>
+
+    <button class="map__timeline" id="timelineBtn">القائمة الكاملة</button>
+    <div class="ribbon">25</div>
+    <div class="credit">powered by <b>YOURSTUDIO</b></div>
   </section>
 
   <!-- ============================================================= -->
-  <!-- القسم 4 — المميزات (Feature Cards)                            -->
+  <!-- القسم 5 — محطة المشروع (Station: عنوان + رقم عملاق)           -->
   <!-- ============================================================= -->
-  <section id="section-4-features" class="features" data-section="4">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">لماذا نحن</span>
-        <h2 class="section-title">مميزات تصنع الفرق</h2>
-        <p class="section-desc">كل عنصر في النظام مصمَّم بعناية ليجمع بين الجمال والوضوح والأداء.</p>
-      </div>
-
-      <div class="features__grid">
-        <article class="card reveal">
-          <div class="card__icon card__icon--violet">◆</div>
-          <h3 class="card__title">تدرّجات حيّة</h3>
-          <p class="card__text">خلفيات متدرّجة جريئة تمنح الهوية طاقة بصرية مميّزة وحضورًا لا يُنسى.</p>
-          <a href="#" class="link link--primary">اعرف أكثر ←</a>
-        </article>
-
-        <article class="card reveal" data-delay="100">
-          <div class="card__icon card__icon--magenta">●</div>
-          <h3 class="card__title">طباعة واضحة</h3>
-          <p class="card__text">تدرّج هرمي دقيق للخطوط يضمن قراءة مريحة على كل الأحجام والشاشات.</p>
-          <a href="#" class="link link--primary">اعرف أكثر ←</a>
-        </article>
-
-        <article class="card reveal" data-delay="200">
-          <div class="card__icon card__icon--orange">▲</div>
-          <h3 class="card__title">تفاعل سلس</h3>
-          <p class="card__text">انتقالات ناعمة بسرعة 0.2 ثانية تمنح كل عنصر إحساسًا حيًّا واحترافيًّا.</p>
-          <a href="#" class="link link--primary">اعرف أكثر ←</a>
-        </article>
-
-        <article class="card reveal" data-delay="300">
-          <div class="card__icon card__icon--cyan">✦</div>
-          <h3 class="card__title">تجاوب كامل</h3>
-          <p class="card__text">تخطيط مرن يتكيّف من الجوّال إلى الشاشات الكبيرة دون أي تنازل عن الجودة.</p>
-          <a href="#" class="link link--primary">اعرف أكثر ←</a>
-        </article>
-
-        <article class="card reveal" data-delay="400">
-          <div class="card__icon card__icon--violet">✺</div>
-          <h3 class="card__title">إتاحة للجميع</h3>
-          <p class="card__text">أهداف لمس بحجم 44 بكسل على الأقل وتباين عالٍ يلتزم بمعايير الوصول.</p>
-          <a href="#" class="link link--primary">اعرف أكثر ←</a>
-        </article>
-
-        <article class="card reveal" data-delay="500">
-          <div class="card__icon card__icon--orange">❍</div>
-          <h3 class="card__title">نظام موحّد</h3>
-          <p class="card__text">مسافات وألوان وحواف بمقياس واحد متّسق يجعل التوسّع والتعديل أمرًا سهلاً.</p>
-          <a href="#" class="link link--primary">اعرف أكثر ←</a>
-        </article>
-      </div>
+  <section id="section-5-station" class="screen station" data-screen="station" hidden>
+    <div class="venue-bg venue-bg--zoom" aria-hidden="true">
+      <!-- مكان صورة جناح المشروع (استبدلها لاحقًا) -->
+      <div class="station__booth" id="stationBooth"></div>
     </div>
+    <button class="nav-close" id="stationClose" aria-label="إغلاق">✕</button>
+    <button class="nav-arrow nav-arrow--prev" data-nav="prev" aria-label="السابق">‹</button>
+    <button class="nav-arrow nav-arrow--next" data-nav="next" aria-label="التالي">›</button>
+
+    <h2 class="station__title" id="stationTitle">عنوان المشروع</h2>
+    <div class="station__num" id="stationNum">01</div>
+
+    <button class="station__scroll" id="openStory">
+      <span class="station__mouse"></span>
+      <span>اعرف القصة</span>
+    </button>
+    <div class="ribbon">25</div>
   </section>
 
   <!-- ============================================================= -->
-  <!-- القسم 5 — معرض العناصر (Components Showcase)                  -->
+  <!-- القسم 6 — لوحة القصة (Story Panel: صورة + عنوان + نص + ترقيم) -->
   <!-- ============================================================= -->
-  <section id="section-5-showcase" class="showcase" data-section="5">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">مكتبة العناصر</span>
-        <h2 class="section-title">أزرار وشارات وبطاقات</h2>
-        <p class="section-desc">عناصر واجهة جاهزة بكل الحالات التفاعلية.</p>
-      </div>
+  <section id="section-6-story" class="screen story" data-screen="story" hidden>
+    <button class="nav-close" id="storyClose" aria-label="إغلاق">✕</button>
 
-      <div class="showcase__grid">
-        <!-- 5.1 الأزرار -->
-        <div class="panel reveal">
-          <h3 class="panel__title">5.1 — الأزرار</h3>
-          <div class="panel__row">
-            <button class="btn btn--primary btn--sm" data-ripple>زر رئيسي</button>
-            <button class="btn btn--dark btn--sm" data-ripple>زر داكن</button>
-            <button class="btn btn--outline btn--sm" data-ripple>زر محدّد</button>
-          </div>
-        </div>
-
-        <!-- 5.2 الشارات -->
-        <div class="panel reveal" data-delay="100">
-          <h3 class="panel__title">5.2 — الشارات</h3>
-          <div class="panel__row">
-            <span class="badge badge--success">✓ ناجح</span>
-            <span class="badge badge--warning">⚠ تحذير</span>
-            <span class="badge badge--error">✕ خطأ</span>
-          </div>
-        </div>
-
-        <!-- 5.3 بطاقة مصغّرة -->
-        <div class="panel reveal" data-delay="200">
-          <h3 class="panel__title">5.3 — روابط</h3>
-          <div class="panel__row panel__row--col">
-            <a href="#" class="link link--primary">رابط رئيسي برتقالي</a>
-            <a href="#" class="link link--muted">رابط ثانوي رمادي</a>
-          </div>
-        </div>
+    <div class="story__scroll" id="storyScroll">
+      <!-- شريحة القصة (تتغيّر بالترقيم) -->
+      <figure class="story__media">
+        <img id="storyImg" src="assets/placeholder.svg" alt="" />
+        <figcaption class="story__caption" id="storyCaption"></figcaption>
+      </figure>
+      <div class="story__body">
+        <h3 class="story__heading" id="storyHeading"></h3>
+        <p class="story__text" id="storyText"></p>
       </div>
     </div>
+
+    <!-- القسم 7 — أدوات الترقيم/التنقّل (Footer pagination) -->
+    <footer class="story__footer" id="section-7-nav">
+      <span class="story__section" id="storySection"></span>
+      <div class="story__pager">
+        <button class="pager__btn" data-page="prev" aria-label="السابق">‹</button>
+        <span class="pager__count" id="storyCount">1/1</span>
+        <button class="pager__btn" data-page="next" aria-label="التالي">›</button>
+      </div>
+    </footer>
   </section>
 
-  <!-- ============================================================= -->
-  <!-- القسم 6 — نموذج التواصل (Contact Form)                        -->
-  <!-- ============================================================= -->
-  <section id="section-6-form" class="contact" data-section="6">
-    <div class="container">
-      <div class="contact__wrap reveal">
-        <div class="contact__intro">
-          <span class="eyebrow eyebrow--light">تواصل معنا</span>
-          <h2 class="contact__title">لنبدأ الحديث</h2>
-          <p class="contact__desc">
-            هل لديك سؤال أو فكرة؟ املأ النموذج وسنعود إليك في أقرب وقت.
-          </p>
-        </div>
+</div>
 
-        <form class="form" id="contactForm" novalidate>
-          <div class="form__group">
-            <label class="form__label" for="name">الاسم</label>
-            <input class="input" id="name" type="text" placeholder="اكتب اسمك الكامل" required />
-          </div>
-          <div class="form__group">
-            <label class="form__label" for="email">البريد الإلكتروني</label>
-            <input class="input" id="email" type="email" placeholder="name@example.com" required />
-          </div>
-          <div class="form__group">
-            <label class="form__label" for="msg">رسالتك</label>
-            <textarea class="input textarea" id="msg" placeholder="اكتب رسالتك هنا..." required></textarea>
-          </div>
-          <button class="btn btn--primary btn--block" type="submit" data-ripple>إرسال الرسالة</button>
-          <p class="form__note" id="formNote" hidden>✓ شكرًا لك! تم استلام رسالتك.</p>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================= -->
-  <!-- القسم 7 — التذييل (Footer)                                    -->
-  <!-- ============================================================= -->
-  <footer id="section-7-footer" class="footer" data-section="7">
-    <div class="container footer__inner">
-      <div class="footer__brand">
-        <span class="nav__logo-mark">25</span>
-        <p>نظام تصميم الذكرى السنوية — مبني بكل المؤثرات.</p>
-      </div>
-      <div class="footer__cols">
-        <div class="footer__col">
-          <h4>الموقع</h4>
-          <a href="#section-2-hero">الرئيسية</a>
-          <a href="#section-4-features">المميزات</a>
-          <a href="#section-6-form">تواصل</a>
-        </div>
-        <div class="footer__col">
-          <h4>تابعنا</h4>
-          <a href="#">تويتر / X</a>
-          <a href="#">انستغرام</a>
-          <a href="#">لينكدإن</a>
-        </div>
-      </div>
-    </div>
-    <div class="footer__bar">© 2026 — جميع الحقوق محفوظة.</div>
-  </footer>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
